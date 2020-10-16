@@ -1,0 +1,115 @@
+<mvc:View  xmlns="sap.m"  xmlns:mvc="sap.ui.core.mvc" controllerName="ns.helloworld.controller.Invoicelist">
+    <Table  id="Listagem" headerText="{i18n>invoiceListTitle}" class="sapUiResponsiveMargin" width="auto" 
+            items="{ path :'dados>/Invoices', sorter : {path :'ShipperName', group : true} }"  >
+            <headerToolbar>
+                <Toolbar id="barra">
+                    <Title id="Title" text="{i18n>invoiceListTitle}"/>
+                    <ToolbarSpacer id="Spacer"/>
+                    <SearchField id="Search" width="50%" search=".onFilterInvoices"/>
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column id="_IDGenColumn1"
+                    hAlign="End"
+                    minScreenWidth="Small"
+                    demandPopin="true"
+                    width="4em">
+                    <Text id="_IDGenText1" text="{i18n>columnQuantity}"/>
+                </Column>
+                <Column id="_IDGenColumn2">
+                    <Text id="_IDGenText2" text="{i18n>columnName}"/>
+                </Column>
+                <Column id="_IDGenColumn3"
+                    minScreenWidth="Small"
+                    demandPopin="true">
+                    <Text id="_IDGenText3" text="{i18n>columnStatus}"/>
+                </Column>
+                <Column id="_IDGenColumn4"
+                    minScreenWidth="Tablet"
+                    demandPopin="false">
+                    <Text id="_IDGenText4" text="{i18n>columnSupplier}"/>
+                </Column>
+                <Column id="_IDGenColumn5"
+                    hAlign="End">
+                    <Text id="_IDGenText5" text="{i18n>columnPrice}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1"
+                    type="Navigation"
+                    press=".onPress">
+                    <cells>
+                        <ObjectNumber id="_IDGenObjectNumber1" number="{dados>Quantity}" emphasized="false"/>
+                        <ObjectIdentifier id="_IDGenObjectIdentifier1" title="{dados>ProductName}"/>
+                        <Text id="_IDGenText6" text="{ path: 'dados>Status', formatter: '.formatter.statusText' }"/>
+                        <Text id="_IDGenText7" text="{dados>ShipperName}"/>
+                        <ObjectNumber id="_IDGenObjectNumber2"
+                            number="{ parts: [{path: 'dados>ExtendedPrice'}, {path: 'view>/currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false } }"
+                            unit="{view>/currency}"
+                            state="{= ${dados>ExtendedPrice} > 50 ? 'Error' : 'Success' }"/>
+                    </cells>
+                </ColumnListItem>
+        </items>          
+    </Table>
+
+<!-- Modelo inicial de Listagem sem responsividade
+    <List  id="Listagem" headerText="{i18n>invoiceListTitle}" class="sapUiResponsiveMargin" width="auto" 
+           items="{ path :'dados>/Invoices', sorter : {path :'ShipperName', group : true} }"  >
+        <headerToolbar>
+            <Toolbar id="barra">
+                <Title id="Title" text="{i18n>invoiceListTitle}"/>
+                <ToolbarSpacer id="Spacer"/>
+                <SearchField id="Search" width="50%" search=".onFilterInvoices"/>
+            </Toolbar>
+        </headerToolbar>
+        <items>
+            <ObjectListItem id="Items"  
+                title="{dados>ProductName} ({dados>Quantity})"
+                number="{parts: [{path:'dados>ExtendedPrice'},{path:'view>/currency'}], type: 'sap.ui.model.type.Currency',formatOptions: {showMeasure: false }}"
+                numberUnit="{view>/currency}"
+                numberState="{= ${dados>ExtendedPrice} > 50 ? 'Error' : 'Success' }"
+                type="Navigation" press=".onPress">
+                <firstStatus>
+                    <ObjectStatus id="Status" text="{path: 'dados>Status', formatter: '.formatter.statusText'}"/>
+                </firstStatus>
+			</ObjectListItem>            
+        </items>
+   </List>
+-->
+</mvc:View>
+
+
+
+
+
+
+
+
+<!-- Comentada view por falha do acesso database Northwind
+
+<mvc:View  xmlns="sap.m"  xmlns:mvc="sap.ui.core.mvc" controllerName="ns.helloworld.controller.Invoicelist">
+   <List id="Listagem" headerText="{i18n>invoiceListTitle}" class="sapUiResponsiveMargin" width="auto" 
+         items="{ path :'database>/Invoices', sorter : {path :'ShipperName', group : true} }"  >
+      <headerToolbar>
+         <Toolbar id="barra">
+            <Title id="Title" text="{i18n>invoiceListTitle}"/>
+            <ToolbarSpacer id="Spacer"/>
+            <SearchField id="Search" width="50%" search=".onFilterInvoices"/>
+         </Toolbar>
+      </headerToolbar>
+        <items>
+            <ObjectListItem id="Items"  
+                title="{database>ProductName} ({database>Quantity})"
+                number="{parts: [{path:'database>ExtendedPrice'},{path:'view>/currency'}], type: 'sap.ui.model.type.Currency',formatOptions: {showMeasure: false }}"
+                numberUnit="{view>/currency}"
+                numberState="{= ${database>ExtendedPrice} > 50 ? 'Error' : 'Success' }"
+                type="Navigation" press="onPress">
+                <firstStatus>
+                    <ObjectStatus id="Status" text="{path: 'database>Status', formatter: '.formatter.statusText'}"/>
+                </firstStatus>
+			</ObjectListItem>            
+        </items>
+   </List>
+</mvc:View>
+
+ -->

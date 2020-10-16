@@ -1,0 +1,11 @@
+<mvc:View controllerName="ns.helloworld.controller.Hellopanel" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">    
+    <Panel id="panel" headerText="{i18n>helloPanelTitle}" class="sapUiResponsiveMargin" width="auto"
+    	expandable="{device>/system/phone}" expanded="{= !${device>/system/phone} }">
+        <content>
+            <Button id="hello"  class="myCustomButton" text="{i18n>showHelloButtonText}" press=".onShowHello"/>
+            <Input  id="msgdt"  class="sapUiSmallMarginEnd" value="{dados>/caixa/nome}" description="{i18n>helloMsg} {dados>/caixa/nome}" valueLiveUpdate="true" width="30%"/>
+            <FormattedText id="texto" htmlText="Hello {dados>/caixa/nome}" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>  
+            <Button id="helly" icon="sap-icon://world" class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop" text="{i18n>openDialogButtonText}"  press=".onOpenDialog"/>
+        </content>
+    </Panel>  
+</mvc:View>
